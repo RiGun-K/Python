@@ -1,5 +1,5 @@
 # str (문자열 클래스)
-
+ 
 s = "ABC"
 type(s)     # class 'str'
 v = s[1]    # B
