@@ -25,7 +25,7 @@ calc([1, 2])        # 인덱스에러 None
 # 복수 예외들이 동일한 except 블럭을 가지면,
 # 하나의 except 문에 묶어서 사용 가능
 
-def calc(values2):
+def calc(values):
     sum = None
     try:
         sum = values[0] + values[1] + values[2]
@@ -35,14 +35,15 @@ def calc(values2):
 
 # 에러무시와 에러생성
     # 보통 pass문 사용
-
+    # check()
+check = 2 
 try:
-    check()
+    check
 except FileExistsError:
     pass
 
     # 에러를 던지기 위해 raise문 사용 (뒤에 공백이면 현재 Exception)
-
+total = 3
 if total < 0:
     raise Exception('Total Error')
 
