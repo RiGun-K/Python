@@ -1,4 +1,4 @@
-print("Hello Python")
+print("Hello Python, Start With RiGun")
 
 print(5 % 2)
 
