@@ -4,6 +4,7 @@ print(5 % 2)
 
 x = True
 y = False
+z = True
 
 if x and y:
     print("Yes")
