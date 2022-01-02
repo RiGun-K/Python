@@ -1,6 +1,6 @@
 print("Hello Python, Start With RiGun")
 
-print(5 % 2)
+print(7 % 2)
 
 x = True
 y = False
