@@ -6,7 +6,8 @@ import cv2
 from PIL import Image
 
 # 이미지 열기
-im = Image.open('C:\Users\RiGun\Python\Python 활용\Profile.jpg')
+# im = Image.open('C:\Users\RiGun\Python\Python 활용\Profile.jpg')
+im = Image.open('./Profile.jpg')
 
 im.show()
 
