@@ -6,7 +6,7 @@ import math
 n = math.factorial(5)
 
     # 하나의 함수만을 불러 사용
-    # 호출시 "모듈명.함수명" 이 아니라 직접 "함수명"만 사용
+    # 호출시 "모듈명.함수명" 이 아니라 직접 "함수명"만 사용.
 from math import factorial
 n = factorial(5) / factorial(3)
 
