@@ -4,8 +4,8 @@ import urllib.request
 import datetime
 import time
 import json
-client_id = ''
-client_secret = ''
+client_id = ''           # 발급받은 ID 값 입력
+client_secret = ''       # 발급받은 KEY 값 입력
 
 
 # 터미널 상에서 원하는 검색어 입력하면 데이터 조회후 같은경로에서 JSON 파일(데이터 파일) 생성 
