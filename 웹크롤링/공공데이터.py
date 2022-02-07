@@ -1,54 +1,19 @@
-# 코로나 확진자 API 
-from urllib.request import urlopen
-from urllib.parse import urlencode, unquote, quote_plus
-import urllib
+# 코로나 확진자 API 공공데이터 활용
 import requests
-import pandas as pd
-import xmltodict
+import pprint
 import json
-# 위에서 20210119 부터 20210120 까지 데이터를 불러옵니다
-key=''
-url = f'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey={key}&'
-queryParams = urlencode({ quote_plus('pageNo') : 1, 
-                          quote_plus('numOfRows') : 10,
-                          quote_plus('startCreateDt') : '20210119',
-                          quote_plus('endCreateDt') : '20210120'})
-url2 = url + queryParams
-response = urlopen(url2)
-# print(type(response)) # HTTPSresponse 
-results = response.read().decode("utf-8")
-# print(type(results))   # str
-results_to_json = xmltodict.parse(results)
-data = json.loads(json.dumps(results_to_json))
-print(type(data))   # dic
-print(data)   
-# {'accDefRate': '1.5093139972', 'accExamCnt': '4269316', 'accExamCompCnt': '4092389', 'careCnt': '17897', 
-# 'clearCnt': '42953', 'createDt': '2021-01-01 09:36:53.691',                              'deathCnt': '917', 'decideCnt': '61767', 
-# 'examCnt': '176927', 'resutlNegCnt': '4030622', 'seq': '372', 
-# 'stateDt': '20210101', 'stateTime': '00:00', 'updateDt': '2021-01-03 10:35:39.056'}
-corona=data['response']['body']['items']['item']
-#추가하고 싶은 리스트 생성
-Date=[]
-Cnt=[]
-clear_cnt=[]
-care_cnt=[]
-death_cnt=[]
-exam_cnt=[]     # examCnt   검사중
-for i in corona:
-    Date.append(i['stateDt'])  #'stateDt': '20200801'
-    Cnt.append(i['decideCnt'])  # decideCnt': '14336'   누적확진자
-    clear_cnt.append(i['clearCnt'])   # 13233           격리 해제환자
-    care_cnt.append(i['careCnt'])     # 802             치료중 환자
-    death_cnt.append(i['deathCnt'])    #301             사망자 수
-df=pd.DataFrame([Date,Cnt,clear_cnt,care_cnt,death_cnt]).T
-df.columns=['날짜','누적확진자','격리해제환자','치료중환자','사망자수'] 
-df=df.sort_values(by='날짜', ascending=True)
-# df.columns=['Date','acc_cnt','clear_cnt','care_cnt','death_cnt']
-# df=df.sort_values(by='Date', ascending=True)
-# df.head()
-# df.info()
-# df.describe()
-# csv 파일 생성
-df.to_csv('sample.csv')
-# 메모장
-df.to_csv('sample.txt')
+import pandas as pd
+from pandas.io.json import json_normalize
+
+url = 'https://api.odcloud.kr/api/15080665/v1/uddi:6377af05-8fed-484c-868b-a9a72fcb0089?page=1&perPage=10&returnType=JSON&serviceKey=YL0diN3KBFnUdJT71o2BBUABdfb9JRhm0oojiWlEpX6o8N0rT5NODTwzJOdWnYkUxxOOTVp7GwlT%2Bv%2FJpbC8Ow%3D%3D'
+
+response = requests.get(url)
+
+contents = response.text
+    # print(contents)
+
+# 문자열을 JSON 으로 변경
+json_ob = json.loads(contents)
+print(json_ob)
+print(type(json_ob)) # JSON 타입 확인
+
