@@ -36,3 +36,17 @@ print(wine.groupby('type')['quality'].describe())
 print(wine.groupby('type')['quality'].mean())
 print(wine.groupby('type')['quality'].std())
 print(wine.groupby('type')['quality'].agg(['mena','std']))
+
+# t-검정과 회귀 분석으로 그룹 비교하기
+
+from scipy import stats
+from statsmodels.formula.api import ols, glm
+
+red_wine_quality = wine.loc[wine['type'] == 'red','quality']
+white_wine_quality = wine.loc[wine['type'] == 'white','quality']
+
+stats.ttest_ind(red_wine_quality, white_wine_quality, equal_var = False)
+
+Rformual ='quality ~ fixed_acidity + volatile_acidity + citric_acid + residual_sugar + chlorides + free_sulfur_dioxide + total_sulfur_dioxide + density + pH + sulphates + alcohol'
+regression_result = ols(Rformual, data = wine).fit()
+print(regression_result.summary())
