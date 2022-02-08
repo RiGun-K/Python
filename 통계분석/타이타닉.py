@@ -1,6 +1,7 @@
 import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
+import wordcloud
 titanic = sns.load_dataset("titanic")
 titanic.to_csv('C:/Users/RiGun/Python/통계분석/titanic.csv', index = False)
 
