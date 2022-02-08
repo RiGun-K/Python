@@ -5,7 +5,7 @@ import json
 import pandas as pd
 from pandas.io.json import json_normalize
 
-url = 'https://api.odcloud.kr/api/15080665/v1/uddi:6377af05-8fed-484c-868b-a9a72fcb0089?page=1&perPage=10&returnType=JSON&serviceKey='
+url = 'https://api.odcloud.kr/api/15080665/v1/uddi:6377af05-8fed-484c-868b-a9a72fcb0089?page=1&perPage=10&serviceKey=YL0diN3KBFnUdJT71o2BBUABdfb9JRhm0oojiWlEpX6o8N0rT5NODTwzJOdWnYkUxxOOTVp7GwlT%2Bv%2FJpbC8Ow%3D%3D'
 
 response = requests.get(url)
 
