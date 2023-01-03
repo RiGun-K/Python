@@ -6,4 +6,6 @@ s3 = '''Hello Python'''
 print(s3)
 s4 = """Hello Python"""
 print(s4)
+s5 = """"Hello Python""""
+print(s5)
 
